@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<title>[slide show title here]</title>
+<title>Same-Domain AJAX</title>
 <!-- metadata -->
 <meta name="generator" content="S5" />
 <meta name="version" content="S5 1.1" />
@@ -28,38 +28,160 @@
 <div id="controls"><!-- DO NOT EDIT --></div>
 <div id="currentSlide"><!-- DO NOT EDIT --></div>
 <div id="header"></div>
-<div id="footer">
-<h1>[location/date of presentation]</h1>
-<h2>[slide show title here]</h2>
-</div>
-
 </div>
 
 
 <div class="presentation">
 
 <div class="slide">
-<h1>[slide show title here]</h1>
-<h2>[slide show subtitle here]</h2>
-<h3>[name of presenter]</h3>
-<h4>[affiliation of presenter]</h4>
+<h1>Same-Domain AJAX</h1>
+<h2></h2>
+<h3>Spencer Tipping</h3>
 </div>
 
+<div class='slide'>
+<h1>HTTP</h1>
+<p>When you go to Google, your browser:</p>
+<ol class='incremental'>
+<li>opens a connection to port 80 of www.google.com</li>
+<li>sends a GET request</li>
+<li>waits for the server to send HTML</li>
+<li>displays the HTML</li>
+<li>closes the connection</li>
+</ol>
+</div>
 
-<div class="slide">
-<h1>[slide title]</h1>
-<ul>
-<li>[point one]</li>
-<li>[point two]</li>
-<li>[point three]</li>
-<li>[point four]</li>
-<li>[point five]</li>
+<div class='slide'>
+<h1>GET request</h1>
+<h4>Here's what a GET request looks like:</h4>
+<pre>
+GET / HTTP/1.1
+Host: google.com
+Accept: text/html
+
+</pre>
+(intentional extra newline at the end)
+</div>
+
+<div class='slide'>
+<h1>Server reply</h1>
+<h4>The server sends this back:</h4>
+<pre>
+HTTP 200 OK
+Content-type: text/html
+Content-length: 405
+
+&lt;!DOCTYPE ...&gt;
+&lt;html&gt;
+...
+&lt;/html&gt;
+</pre>
+</div>
+
+<div class='slide'>
+<h1>AJAX is HTTP inside JavaScript</h1>
+<ul class='incremental'>
+<li>Pop open the <a target='_blank' href='http://jsconsole.com'>JavaScript console</a></li>
+<li>Type <code>:load jquery</code> (which we'll cover later)</li>
+<li>Run <code>$.get('/console.css', console.log)</code></li>
 </ul>
-<div class="handout">
-[any material that should appear in print but not on the slide]
-</div>
 </div>
 
+<div class='slide'>
+<h1>What just happened?</h1>
+<ul class='incremental'>
+<li>We used jQuery to load the page's CSS and display it on the console.</li>
+<li>The URL <code>/console.css</code> refers to the current server, in this case <code>jsconsole.com</code>.</li>
+<li>jQuery created an <code>XMLHttpRequest</code> to load the content and returned it immediately.</li>
+<li>Once the browser got it, it called <code>console.log</code> with a string of CSS.</li>
+</ul>
+</div>
+
+<div class='slide'>
+<h1>The "A" of AJAX</h1>
+<p>stands for "asynchronous".</p>
+<ul class='incremental'>
+<li>JavaScript is single-threaded and non-blocking</li>
+<li>Instead of returning the content, AJAX functions use <em>callbacks</em></li>
+<li>In our previous example, the callback was console.log</li>
+</ul>
+</div>
+
+<div class='slide'>
+<h1>Using XMLHttpRequest</h1>
+<pre>
+var r = new XMLHttpRequest();
+r.open ('GET', '/console.css');
+r.onreadystatechange = function () {
+  if (r.readyState === 4)
+    console.log (r.responseText);
+};
+r.send();
+</pre>
+</div>
+
+<div class='slide'>
+<h1>And because IE sucks...</h1>
+<pre>
+if (typeof XMLHttpRequest == "undefined")
+  XMLHttpRequest = function () {
+    try { return new ActiveXObject("Msxml2.XMLHTTP.6.0"); }
+    catch (e) {}
+    try { return new ActiveXObject("Msxml2.XMLHTTP.3.0"); }
+    catch (e) {}
+    try { return new ActiveXObject("Msxml2.XMLHTTP"); }
+    catch (e) {}
+    // Microsoft.XMLHTTP points to Msxml2.XMLHTTP.3.0 and is redundant
+    throw new Error("This browser does not support XMLHttpRequest.");
+  };
+</pre>
+</div>
+
+<div class='slide'>
+</div>
+
+<div class='slide'>
+<h1>Other types of HTTP requests</h1>
+<ul class='incremental'>
+<li>POST: a GET with an upload</li>
+<li>PUT: indicates that you want to create something</li>
+<li>DELETE: indicates that you want to delete something</li>
+</ul>
+</div>
+
+<div class='slide'>
+<h1>Common uses</h1>
+<p>Imagine we have a time server. Its API might look like this:</p>
+<ul>
+<li>GET to retrieve the current time</li>
+<li>POST to set the time</li>
+<li>PUT to create a countdown timer</li>
+<li>DELETE to remove a countdown timer</li>
+</ul>
+</div>
+
+<div class='slide'>
+<a target='_blank' href='http://en.wikipedia.org/wiki/REST'><h1>REST</h1></a>
+<p>Our time server has a <em>REST</em>ful API, because we're reusing HTTP methods and referring to HTTP objects.</p>
+<p>(REST stands for REpresentational State Transfer)</p>
+</div>
+
+<div class='slide'>
+<a target='_blank' href='http://en.wikipedia.org/wiki/SOAP'><h1>SOAP</h1></a>
+<p>Contrast this with SOAP, which uses XML to encode method calls and always uses POST requests.</p>
+<p>(SOAP stands for Simple Object Access Protocol)</p>
+</div>
+
+<div class='slide'>
+<a target='_blank' href='http://en.wikipedia.org/wiki/Comet_(programming)'><h1>Comet</h1></a>
+<p>Server &rarr; browser</p>
+<ul class='incremental'>
+<li>This is how chat sites work (such as GChat)</li>
+<li>Because AJAX is asynchronous, browsers can "fire and forget"</li>
+<li>The server replies at some future time</li>
+<li>The AJAX callback runs on the client to handle the reply</li>
+</ul>
+</div>
 
 </div>
 

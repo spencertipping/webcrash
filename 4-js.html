@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<title>[slide show title here]</title>
+<title>JavaScript</title>
 <!-- metadata -->
 <meta name="generator" content="S5" />
 <meta name="version" content="S5 1.1" />
@@ -19,6 +19,15 @@
 <link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
 <link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
 <link rel="stylesheet" href="ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+
+<style>
+pre {
+  font-family: sans-serif;
+  border-left: solid 0.1em #888;
+  background: #eee;
+  padding-left: 1em;
+}
+</style>
 <!-- S5 JS -->
 <script src="ui/default/slides.js" type="text/javascript"></script>
 </head>
@@ -34,31 +43,141 @@
 <div class="presentation">
 
 <div class="slide">
-<h1>Using CSS</h1>
-<h2>(And why the &lt;font&gt; tag is evil)</h2>
+<h1>Introduction to JavaScript</h1>
+<h2></h2>
 <h3>Spencer Tipping</h3>
-
-<a href='http://spencertipping.com/webshell/htmledit.html#example=examples/css.html'>
 </div>
 
+<div class='slide'>
+First, pop open <a target='_blank' href='http://jsconsole.com'>this useful JavaScript console</a>.
+</div>
 
+<div class='slide'>
+<h1>Here's some JavaScript</h1>
+<pre>
+var x = 5;
+if (x &gt; 2) {
+  alert ("Greater than 2!");
+} else if (x &lt; 0) {
+  alert ('Less than zero');
+}
+</pre>
+Looks a lot like Java. (Not an accident, by the way.)
+</div>
 
-
-<div class="slide">
-<h1>[slide title]</h1>
-<ul>
-<li>[point one]</li>
-<li>[point two]</li>
-<li>[point three]</li>
-<li>[point four]</li>
-<li>[point five]</li>
+<div class='slide'>
+<h1>Where JavaScript == Java</h1>
+<ul class='incremental'>
+<li>Operators: +, -, *, /, ^, &amp;, |, !, %, &lt;, &gt;, ==, !=, ?:, etc.</li>
+<li>Dot-notation: <code>object.method()</code></li>
+<li>if, for, while, do-while, switch</li>
+<li>Line (//) and block (/* ... */) comments</li>
+<li>Numeric literals, boolean literals, and <code>null</code></li>
+<li>These all behave exactly the way you would expect them to behave in Java, and have the same syntax.</li>
 </ul>
-<div class="handout">
-[any material that should appear in print but not on the slide]
-</div>
 </div>
 
+<div class='slide'>
+<h1>Where JavaScript is much cooler</h1>
+<ul class='incremental'>
+<li>Regular expressions: /f.o?[bar]/gi</li>
+<li>Array literals: [1, 'foo', false]</li>
+<li>Object literals: {foo: 'bar', length: 3}</li>
+</ul>
+</div>
 
+<div class='slide'>
+<h1>Object literals?</h1>
+<ul class='incremental'>
+<li>First do this: var o = {foo: 'bar', length: 3};</li>
+<li>And now try this: o.foo</li>
+<li>And this: o.length</li>
+<li>The dot-notation means "grab this member of an object".</li>
+</ul>
+</div>
+
+<div class='slide'>
+<h1>And the best part:</h1>
+<h2>Function literals</h2>
+<pre>
+var f = function (x) {
+  return x + 1;
+};
+f(5)            // returns 6
+f('foo')        // returns 'foo1'
+</pre>
+</div>
+
+<div class='slide'>
+<h1>Prototypes</h1>
+<ul class='incremental'>
+<li>Let you do OOP</li>
+<li>Much more powerful than classes</li>
+<li>Can be generated programmatically (though doing this can get you fired)</li>
+</ul>
+</div>
+
+<div class='slide'>
+<strong>Let's build this Java class in JavaScript:</strong>
+<pre>
+class Point {
+  public Point (double x, double y) {
+    this.x = x;
+    this.y = y;
+  }
+  public double x;
+  public double y;
+  public double distance() {
+    return Math.sqrt (x*x + y*y);
+  }
+}
+</pre>
+</div>
+
+<div class='slide'>
+<strong>First we create a constructor:</strong>
+<pre>
+var Point = function (x, y) {
+  this.x = x;
+  this.y = y;
+};
+</pre>
+<strong>Then we add the distance method:</strong>
+<pre>
+Point.prototype.distance = function () {
+  return Math.sqrt (this.x * this.x + this.y * this.y);
+};
+</pre>
+<strong>And that's it -- we're done.</strong>
+</div>
+
+<div class='slide'>
+<strong>Here's how to use it:</strong>
+<pre>
+var p = new Point(3, 4);
+p.x           // returns 3
+p.y           // returns 4
+p.distance()  // returns 5
+</pre>
+</div>
+
+<div class='slide'>
+<h1>How Prototypes Work</h1>
+<ul class='incremental'>
+<li>Each object has its own list of members</li>
+<li>When you ask for a member that isn't there, the object searches its prototype</li>
+<li>If the member isn't there either, then you get <em>undefined</em></li>
+</ul>
+</div>
+
+<div class='slide'>
+<h1>How Prototypes Work</h1>
+<pre>
+var f = function () {return 'foo'};
+({toString: f}).toString()     // returns 'foo'
+({foo: 'bar'}).toString()      // returns '[object Object]'
+({foo: 'bar'}).nonexistent     // returns undefined
+</pre>
 </div>
 
 </body>

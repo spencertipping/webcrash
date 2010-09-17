@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<title>[slide show title here]</title>
+<title>jQuery</title>
 <!-- metadata -->
 <meta name="generator" content="S5" />
 <meta name="version" content="S5 1.1" />
@@ -28,38 +28,46 @@
 <div id="controls"><!-- DO NOT EDIT --></div>
 <div id="currentSlide"><!-- DO NOT EDIT --></div>
 <div id="header"></div>
-<div id="footer">
-<h1>[location/date of presentation]</h1>
-<h2>[slide show title here]</h2>
-</div>
-
 </div>
 
 
 <div class="presentation">
 
 <div class="slide">
-<h1>[slide show title here]</h1>
-<h2>[slide show subtitle here]</h2>
-<h3>[name of presenter]</h3>
-<h4>[affiliation of presenter]</h4>
+<h1>Using jQuery</h1>
+<h3>Spencer Tipping</h3>
 </div>
 
-
-<div class="slide">
-<h1>[slide title]</h1>
-<ul>
-<li>[point one]</li>
-<li>[point two]</li>
-<li>[point three]</li>
-<li>[point four]</li>
-<li>[point five]</li>
+<div class='slide'>
+<h1>What does jQuery do?</h1>
+<ul class='incremental'>
+<li>Grab a bunch of elements</li>
+<li>Do something to each of them</li>
+<li>For example, $('div').append('foo') appends 'foo' to every div</li>
+<li><a target='_blank' href='http://spencertipping.com/webshell/#examples/jquery.html'>Try it out</a></li>
 </ul>
-<div class="handout">
-[any material that should appear in print but not on the slide]
-</div>
 </div>
 
+<div class='slide'>
+<h1>What's going on?</h1>
+<ul class='incremental'>
+<li>jQuery gives you a function called $</li>
+<li>$('string') matches elements selected by the string</li>
+<li>$('string').method() does the same thing to all matched elements</li>
+<li>(The $ function also has methods: $.get, $.post, $.makeArray, etc.)</li>
+</ul>
+</div>
+
+<div class='slide'>
+<h1>Selectors</h1>
+<p>jQuery uses CSS-style selectors to grab elements.</p>
+<strong>Examples:</strong>
+<ul>
+<li>$('p'): select all paragraphs</li>
+<li>$('p, div'): select all paragraphs and divs</li>
+<li>$('#foo'): select the element with ID "foo"</li>
+</ul>
+</div>
 
 </div>
 
