@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Introduction to HTML</title>
+<!-- metadata -->
+<meta name="generator" content="S5" />
+<meta name="version" content="S5 1.1" />
+<meta name="presdate" content="20050728" />
+<meta name="author" content="Eric A. Meyer" />
+<meta name="company" content="Complex Spiral Consulting" />
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+<!-- S5 JS -->
+<script src="ui/default/slides.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="layout">
+<div id="controls"><!-- DO NOT EDIT --></div>
+<div id="currentSlide"><!-- DO NOT EDIT --></div>
+<div id="header"></div>
+</div>
+
+<div class="presentation">
+<div class="slide">
+<h1>Introduction to HTML</h1>
+<h2>Spencer Tipping</h2>
+</div>
+
+<div class='slide'>
+<h1>Anatomy of a document</h1>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    ...
+  &lt;/head&gt;
+  &lt;body&gt;
+    ...
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+
+<div class='slide'>
+<h1>The &lt;head&gt; section</h1>
+<pre>
+&lt;head&gt;
+  &lt;title&gt; ... &lt;/title&gt;
+  &lt;meta name='...' value='...' &gt;
+  &lt;script src='...'&gt;&lt;/script&gt;
+  &lt;link rel='stylesheet' href='...' /&gt;
+&lt;/head&gt;
+</div>
+
+<div class='slide'>
+<h1>The body section</h1>
+<a target='_blank' href='http://localhost/webshell/#/webshell/examples/basic.html'>Click here to open an editor</a>
+</div>
+
+<div class='slide'>
+<h1>Common body elements</h1>
+<ul class='incremental'>
+<li>div: a box of stuff</li>
+<li>span: a flowing wrapper of stuff</li>
+<li>h1, h2, ..., h6: headers</li>
+<li>a: a hyperlink wrapping stuff</li>
+<li>img: an image</li>
+</ul>
+</div>
+
+<div class='slide'>
+<h1>More body elements</h1>
+<ul class='incremental'>
+<li>ul: unordered list of items</li>
+<li>ol: ordered list of items</li>
+<li>li: a list-item wrapper of stuff</li>
+<li>table: a table of tr nodes</li>
+<li>tr: a table row of td or th nodes</li>
+<li>th: a table header cell of stuff</li>
+<li>td: a regular table cell of stuff</li>
+</ul>
+</div>
+
+<div class='slide'>
+<h1>Form elements</h1>
+<ul class='incremental'>
+<li>input: a text box, password box, check box, radio button, etc.</li>
+<li>select: a dropdown box of options</li>
+<li>option: an option in a dropdown box</li>
+<li>button: a clickable button</li>
+<li>textarea: a large area of text</li>
+</ul>
+</div>
+
+<div class='slide'>
+<h1>Tragic mistakes</h1>
+<ul class='incremental'>
+<li>object: a way to embed a plugin</li>
+<li>embed: another way to embed a plugin</li>
+<li>font: the reason we have CSS</li>
+<li>iframe: a sub-page often used for advertising</li>
+<li>form: AJAX that reloads the page</li>
+</ul>
+</div>
+
+<div class='slide'>
+<h1>Common attributes</h1>
+<ul>
+<li>id: names an element uniquely</li>
+<li>class: sets the CSS class of an element (more later)</li>
+<li>style: sets the CSS style directly</li>
+<li>href, src: specify a URL</li>
+</ul>
+</div>
+
+<div class='slide'>
+<h1>Under the hood...</h1>
+</div>
+
+<div class='slide'>
+<h1>Everything is a node</h1>
+<pre>
+&lt;span id='myspan'&gt;
+  &lt;!-- This is a comment --&gt;
+  Some text in the span
+&lt;/span&gt;
+</pre>
+<ol>
+<li>The span containing everything else</li>
+<li>The comment</li>
+<li>The text</li>
+</ol>
+</div>
+
+<div class='slide'>
+<h1>In HTML parlance...</h1>
+<ul class='incremental'>
+<li>The &lt;span&gt; node is the <strong>parent</strong> of the others (which are <strong>children</strong>)</li>
+<li>The comment and text are <strong>siblings</strong> of each other</li>
+<li>Children of children (and so on) are <strong>descendants</strong></li>
+<li>Parents of parents (and so on) are <strong>ancestors</strong></li>
+<li>Nodes that look like &lt;word&gt; are called <strong>elements</strong></li>
+</ul>
+</div>
+
+</div>
+</body>
+</html>

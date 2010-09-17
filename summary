@@ -1,0 +1,42 @@
+Want to learn JavaScript, CSS, HTML, and HTML5 so you can create cutting-edge web applications and stunning websites? Then this is the meetup for you!
+
+In this special, one-time-only, highly concentrated, day-long meetup, you'll learn the ins & outs of everything you need to jump right into "Web 3.0" programming.
+
+At the end of the day, you'll know enough about CSS, HTML5, JavaScript, and browser quirks to develop flashy AJAX applications that work across browsers and across domains.
+
+Breakfast, lunch, and snacks included in the price of registration. If you have a laptop, bring it, as every session will include access to a web page where you can interactively experiment
+with the examples!
+
+9:00 - 9:30 AM Breakfast & Introduction - John
+
+9:30 - 10:00 AM Introduction to HTML - Spencer 
+- Doc types, linear tree structure, basic elements
+
+10:00 - 10:30 AM Beginning CSS - Spencer 
+- Structure/presentation separation (zen garden), style sheets, basic selectors, precedence
+
+10:30 - 11:00 AM Advanced CSS - Spencer 
+- Flow & the box model, advanced selectors (CSS2/3), content generation, animation
+
+11:00 - 12:00 PM Elements of JavaScript - Spencer 
+- Types, special values, control constructs, functions, prototypes, regular expressions, gotchas
+
+12:00 - 1:00 AM Lunch Break
+
+1:00 - 1:45 PM Scripting the DOM - John 
+- W3 DOM, real world DOM, events, dynamic transformations (adding/removing/changing) & styling
+
+1:45 - 3:00 PM Preview of HTML5 - John 
+- Local storage, geolocation, canvas, audio, video, sockets, workers, frame communication, browser history
+
+3:00 - 3:30 PM Same-Domain AJAX - Spencer 
+- HTTP request (GET/POST/PUT/DELETE), APIs (REST/SOAP/RPC), web applications, Comet, history
+
+3:30 - 4:30 PM Introduction to jQuery - Spencer 
+- Selection, manipulation, traversal, AJAX, animation, UI
+
+4:30 - 5:30 PM Going Cross-Browser - John 
+- Pain points (layout issues, events)
+
+5:30 - 6:00 PM Going Cross-Domain - John 
+- Jsonp, iframe hacks (form, hash tag), proxies, Flash, Java
