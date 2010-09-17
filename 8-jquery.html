@@ -66,7 +66,76 @@
 <li>$('p'): select all paragraphs</li>
 <li>$('p, div'): select all paragraphs and divs</li>
 <li>$('#foo'): select the element with ID "foo"</li>
+<li><a target='_blank' href='http://api.jquery.com/category/selectors/'>Full reference</a></li>
 </ul>
+</div>
+
+<div class='slide'>
+<h1>Common methods</h1>
+<strong>All methods return the object they are called on.</strong>
+<ul class='incremental'>
+<li>addClass/removeClass: adds/removes a CSS class from matched elements</li>
+<li>attr(name, value): sets an attribute on each matched element</li>
+<li>append(stuff), prepend(stuff): appends or prepends some HTML to each matched element</li>
+<li>hide(), show(): instantly makes elements invisible or visible</li>
+</ul>
+</div>
+
+<div class='slide'>
+<h1>More common methods</h1>
+<ul class='incremental'>
+<li>css(property, value): sets a CSS property of all elements</li>
+<li>click(callback): calls callback when any matched element is clicked</li>
+<li>text(string): sets the text of each matched element to the string</li>
+<li><a target='_blank' href='http://api.jquery.com/category/manipulation/'>Full reference</a></li>
+</ul>
+</div>
+
+<div class='slide'>
+<h1>Let's build a clock app</h1>
+</div>
+
+<div class='slide'>
+<h1>First, the server script:</h1>
+<pre>
+&lt;!-- spencertipping.com/date.php --&gt;
+&lt;?php echo date(DATE_RFC822); ?&gt;
+</pre>
+</div>
+
+<div class='slide'>
+<h1>Then a client:</h1>
+<a target='_blank' href='http://spencertipping.com/webshell/#examples/jquery-blank.html'>Starting with an empty jQuery app</a>
+</div>
+
+<div class='slide'>
+<h1>Specification</h1>
+<ul class='incremental'>
+<li>display the current time to the user</li>
+<li>want a button to update the time</li>
+<li>no page reloading</li>
+</ul>
+</div>
+
+<div class='slide'>
+<h1>Body elements</h1>
+<pre>
+&lt;div id='time'&gt;&lt;/div&gt;
+&lt;button id='update'&gt;Update&lt;/button&gt;
+</pre>
+</div>
+
+<div class='slide'>
+<h1>Application code</h1>
+<pre>
+$(function () {
+  $('#update').click (function () {
+    $.get('http://spencertipping.com/date.php', function (date) {
+      $('#time').text(date);
+    });
+  });
+});
+</pre>
 </div>
 
 </div>
