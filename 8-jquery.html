@@ -93,6 +93,11 @@
 
 <div class='slide'>
 <h1>Let's build a clock app</h1>
+<ul class='incremental'>
+<li>display the current time to the user</li>
+<li>want a button to update the time</li>
+<li>no page reloading</li>
+</ul>
 </div>
 
 <div class='slide'>
@@ -106,15 +111,7 @@
 <div class='slide'>
 <h1>Then a client:</h1>
 <a target='_blank' href='http://spencertipping.com/webshell/#examples/jquery-blank.html'>Starting with an empty jQuery app</a>
-</div>
-
-<div class='slide'>
-<h1>Specification</h1>
-<ul class='incremental'>
-<li>display the current time to the user</li>
-<li>want a button to update the time</li>
-<li>no page reloading</li>
-</ul>
+<p>(and click "Enable AJAX")</p>
 </div>
 
 <div class='slide'>
@@ -128,11 +125,9 @@
 <div class='slide'>
 <h1>Application code</h1>
 <pre>
-$(function () {
-  $('#update').click (function () {
-    $.get('http://spencertipping.com/date.php', function (date) {
-      $('#time').text(date);
-    });
+$('#update').click (function () {
+  $.get('/date.php', function (date) {
+    $('#time').text(date);
   });
 });
 </pre>
