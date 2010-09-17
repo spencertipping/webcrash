@@ -3,3 +3,9 @@
 /*@import url(pretty.css);  /* stuff that makes the slides look better than blah */
 
 body {font-family: sans-serif}
+pre {
+  font-family: sans-serif;
+  border-left: solid 0.1em #888;
+  background: #eee;
+  padding-left: 1em;
+}
