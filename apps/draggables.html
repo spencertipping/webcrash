@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Draggables</title>
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
+
+    <link type='text/css' rel='stylesheet' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/themes/ui-lightness/jquery-ui.css' /> 
+
+    <script>
+      $(function () {
+        // Listener: Always listen. As soon as we get events, reposition things.
+        var start_listening = function () {
+          $.get ('/listen', function (data) {
+            console.log (data);
+            var id_and_position = data.split(/:/);
+
+            if (id_and_position.length === 3) {
+              var draggable = $('#' + id_and_position[0]);
+              draggable.offset ({left: id_and_position[1], top: id_and_position[2]});
+              draggable.hasClass ('ui-widget-header') || draggable.addClass ('ui-widget-header');
+            } else
+              $('#' + id_and_position[0]).removeClass ('ui-widget-header');
+
+            start_listening ();         // Listen again
+          });
+        };
+
+        start_listening();
+
+        for (var i = 0; i < 100; ++i)
+          $('<div id="draggable-' + i + '" class="draggable">' + i + '</div>').
+            appendTo ('#container').css ({position: 'absolute', top: ((i / 10) >>> 0) * 100, left: (i % 10) * 100});
+
+        $('.draggable').draggable(
+          {drag: function (event, ui) {
+                   $.get ('/send/' + escape(ui.helper.attr('id') + ':' + ui.position.left + ':' + ui.position.top));
+                 },
+
+           stop: function (event, ui) {
+                   $.get ('/send/' + escape(ui.helper.attr('id')));
+                 }});
+      });
+    </script>
+
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+
+      #container {
+        position: relative;
+      }
+
+      .draggable {
+        position: absolute;
+        padding: 15px;
+        cursor: move;
+        border: solid 1px #888;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id='container'></div>
+  </body>
+</html>
