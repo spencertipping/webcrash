@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<title>[slide show title here]</title>
+<title>Advanced CSS</title>
 <!-- metadata -->
 <meta name="generator" content="S5" />
 <meta name="version" content="S5 1.1" />
@@ -28,38 +28,77 @@
 <div id="controls"><!-- DO NOT EDIT --></div>
 <div id="currentSlide"><!-- DO NOT EDIT --></div>
 <div id="header"></div>
-<div id="footer">
-<h1>[location/date of presentation]</h1>
-<h2>[slide show title here]</h2>
 </div>
-
-</div>
-
 
 <div class="presentation">
 
 <div class="slide">
-<h1>[slide show title here]</h1>
-<h2>[slide show subtitle here]</h2>
-<h3>[name of presenter]</h3>
-<h4>[affiliation of presenter]</h4>
+<h1>Advanced CSS</h1>
+<h3>Spencer Tipping</h3>
 </div>
 
+<div class='slide'>
+<strong>Be sure to have <a target='_blank' href='http://spencertipping.com/webshell/#examples/css-selectors.html'>an editor</a> running for this one</strong>
+</div>
 
-<div class="slide">
-<h1>[slide title]</h1>
-<ul>
-<li>[point one]</li>
-<li>[point two]</li>
-<li>[point three]</li>
-<li>[point four]</li>
-<li>[point five]</li>
+<div class='slide'>
+<h1>More selectors</h1>
+<ul class='incremental'>
+<li>h1 + h2: select h2's that come after h1's</li>
+<li>p &gt; *: all direct children of paragraphs</li>
+<li>p[title]: all paragraphs whose "title" attributes are set</li>
+<li>a[target="_blank"]: links opening in other windows</li>
+<li>a[href^="ftp://"]: FTP links</li>
 </ul>
-<div class="handout">
-[any material that should appear in print but not on the slide]
-</div>
 </div>
 
+<div class='slide'>
+<h1>Pseudo-classes</h1>
+<ul class='incremental'>
+<li>Represents a piece of an element, or a state</li>
+<li>a:hover -- a link when you're hovering over it</li>
+<li>*:focus -- anything focused</li>
+<li>p:first-child -- a paragraph that is the first child of its parent</li>
+<li>p:last-child -- a paragraph that is the last child of its parent</li>
+</ul>
+</div>
+
+<div class='slide'>
+<h1>More Pseudo-classes</h1>
+<ul class='incremental'>
+<li>*:nth-child(5) -- the fifth element of every container</li>
+<li>*:nth-child(2n) -- even elements</li>
+<li>*:nth-child(2n+1) -- odd elements</li>
+<li>*:nth-child(even) -- the right way to do even elements</li>
+<li>*:nth-child(odd) -- ditto for odd elements</li>
+</ul>
+</div>
+
+<div class='slide'>
+<h1>Generating stuff</h1>
+<ul class='incremental'>
+<li>:before, :after -- imaginary elements before and after things</li>
+<li>content: 'string' -- a rule to put HTML into imaginary elements</li>
+</ul>
+</div>
+
+<div class='slide'>
+<h1>Parts</h1>
+<ul class='incremental'>
+<li>p::first-line -- the first line of the paragraph</li>
+<li>span::first-letter -- the first letter in the span</li>
+<li><a target='_blank' href='http://www.yourhtmlsource.com/stylesheets/advancedselectors.html'>An article going over all this stuff</a></li>
+</ul>
+</div>
+
+<div class='slide'>
+<h1>Extra goodies</h1>
+<ul class='incremental'>
+<li>opacity: x -- for x between 0 and 1, sets the opacity of an element</li>
+<li>border-radius: x -- uses rounded corners</li>
+<li><a target='_blank' href='http://www.css3.info'>css3.info, describing many more cool things about CSS3</a></li>
+</ul>
+</div>
 
 </div>
 
