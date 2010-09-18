@@ -12,15 +12,16 @@
         // Listener: Always listen. As soon as we get events, reposition things.
         var start_listening = function () {
           $.get ('/listen', function (data) {
-            console.log (data);
-            var id_and_position = data.split(/:/);
+            if (/^#draggables/.test (data)) {
+              var id_and_position = data.substr('#draggables'.length).split(/:/);
 
-            if (id_and_position.length === 3) {
-              var draggable = $('#' + id_and_position[0]);
-              draggable.offset ({left: id_and_position[1], top: id_and_position[2]});
-              draggable.hasClass ('ui-widget-header') || draggable.addClass ('ui-widget-header');
-            } else
-              $('#' + id_and_position[0]).removeClass ('ui-widget-header');
+              if (id_and_position.length === 3) {
+                var draggable = $('#' + id_and_position[0]);
+                draggable.offset ({left: id_and_position[1], top: id_and_position[2]});
+                draggable.hasClass ('ui-widget-header') || draggable.addClass ('ui-widget-header');
+              } else
+                $('#' + id_and_position[0]).removeClass ('ui-widget-header');
+            }
 
             start_listening ();         // Listen again
           });
@@ -34,11 +35,11 @@
 
         $('.draggable').draggable(
           {drag: function (event, ui) {
-                   $.get ('/send/' + escape(ui.helper.attr('id') + ':' + ui.position.left + ':' + ui.position.top));
+                   $.get ('/send/' + escape('#draggables' + ui.helper.attr('id') + ':' + ui.position.left + ':' + ui.position.top));
                  },
 
            stop: function (event, ui) {
-                   $.get ('/send/' + escape(ui.helper.attr('id')));
+                   $.get ('/send/' + escape('#draggables' + ui.helper.attr('id')));
                  }});
       });
     </script>
