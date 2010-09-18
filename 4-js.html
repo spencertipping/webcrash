@@ -47,62 +47,6 @@ First, pop open <a target='_blank' href='http://jsconsole.com'>this useful JavaS
 </div>
 
 <div class='slide'>
-<h1>Here's some JavaScript</h1>
-<pre>
-var x = 5;
-if (x &gt; 2) {
-  alert ("Greater than 2!");
-} else if (x &lt; 0) {
-  alert ('Less than zero');
-}
-</pre>
-Looks a lot like Java. (Not an accident, by the way.)
-</div>
-
-<div class='slide'>
-<h1>Where JavaScript == Java</h1>
-<ul class='incremental'>
-<li>Operators: +, -, *, /, ^, &amp;, |, !, %, &lt;, &gt;, ==, !=, ?:, etc.</li>
-<li>Dot-notation: <code>object.method()</code></li>
-<li>if, for, while, do-while, switch</li>
-<li>Line (//) and block (/* ... */) comments</li>
-<li>Numeric literals, boolean literals, and <code>null</code></li>
-<li>These all behave exactly the way you would expect them to behave in Java, and have the same syntax.</li>
-</ul>
-</div>
-
-<div class='slide'>
-<h1>Where JavaScript is much cooler</h1>
-<ul class='incremental'>
-<li>Regular expressions: /f.o?[bar]/gi</li>
-<li>Array literals: [1, 'foo', false]</li>
-<li>Object literals: {foo: 'bar', length: 3}</li>
-</ul>
-</div>
-
-<div class='slide'>
-<h1>Object literals?</h1>
-<ul class='incremental'>
-<li>First do this: var o = {foo: 'bar', length: 3};</li>
-<li>And now try this: o.foo</li>
-<li>And this: o.length</li>
-<li>The dot-notation means "grab this member of an object".</li>
-</ul>
-</div>
-
-<div class='slide'>
-<h1>And the best part:</h1>
-<h2>Function literals</h2>
-<pre>
-var f = function (x) {
-  return x + 1;
-};
-f(5)            // returns 6
-f('foo')        // returns 'foo1'
-</pre>
-</div>
-
-<div class='slide'>
 <h1>Prototypes</h1>
 <ul class='incremental'>
 <li>Let you do OOP</li>
@@ -172,11 +116,6 @@ var f = function () {return 'foo'};
 ({foo: 'bar'}).toString()      // returns '[object Object]'
 ({foo: 'bar'}).nonexistent     // returns undefined
 </pre>
-</div>
-
-<div class='slide'>
-<h1>Plug</h1>
-<a target='_blank' href='http://spencertipping.com/js-in-ten-minutes/js-in-ten-minutes.pdf'>JavaScript in Ten Minutes</a> written by yours truly.
 </div>
 
 </body>
