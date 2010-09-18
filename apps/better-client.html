@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>One-Room Chat (Improved)</title>
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'></script>
+
+    <script>
+      $(function () {
+        // Listener: Always listen. As soon as we get text, append it to the log.
+        var start_listening = function () {
+          $.get ('/listen', function (data) {
+            var name_and_message = /^([^:]*):(.*)$/.exec (data).slice (1),
+                    author_class = name_and_message[0] === $('#name').val() ? 'me' : 'author';
+            $('#log').append (
+              '<div class="message"><span class="' + author_class + '">' + name_and_message[0] +
+                            '</span><span class="message">' + name_and_message[1] + '</span></div>');
+            start_listening ();         // Listen again
+          });
+        };
+
+        start_listening();
+
+        $('#to-send').keypress (function (e) {
+          if (e.keyCode === 13) {
+            $.get ('/send/' + escape($('#name').val() + ': ' + $('#to-send').val()));
+            $('#to-send').val('');
+          }
+        });
+      });
+    </script>
+
+    <style>
+      body {font-family: sans-serif}
+      span.author {color: green}
+      span.me     {color: blue}
+
+      span.author, span.me {font-weight: bold}
+    </style>
+  </head>
+  <body>
+    <div id='log'></div>
+    <input size='20' id='name' value='Your name' />
+    <input size='80' id='to-send' />
+  </body>
+</html>
