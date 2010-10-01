@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery</title>
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'></script>
+    <style>
+    canvas {border: solid 1px black}
+    </style>
+
+    <script>
+      var send = function (x1, y1, x2, y2) {
+        $.getJSON('http://192.168.1.108:8080/send?message=' + x1 + ':' + y1 + ':' +
+                                                              x2 + ':' + y2);
+      };
+
+      var line = function (x1, y1, x2, y2) {
+        var c = $('canvas')[0].getContext('2d');
+        c.moveTo(x1, y1);
+        c.lineTo(x2, y2);
+        c.stroke();
+      };
+
+      var listen = function () {
+        $.getJSON('http://192.168.1.108:8080/listen?callback=?', function (reply) {
+          var ns = reply.split(/:/);
+          line(ns[0], ns[1], ns[2], ns[3]);
+          listen();
+        });
+      };
+
+      var last_x = 0;
+      var last_y = 0;
+      var down   = false;
+
+      $(function () {
+        var offset = $('canvas').offset();
+        listen();
+
+        $('canvas').mousedown(function (e) {
+          last_x = e.pageX - offset.left;
+          last_y = e.pageY - offset.top;
+          down   = true;
+        }).mousemove(function (e) {
+          if (down) send(last_x, last_y, e.pageX - offset.left, e.pageY - offset.top);
+          last_x = e.pageX - offset.left;
+          last_y = e.pageY - offset.top;
+        }).mouseup (function (e) {
+          down = false;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <strong>Note:</strong> Remember to modify the IP address if you're trying this out at home!
+    <canvas width='500' height='500'></canvas>
+    <div id='monitor'></div>
+  </body>
+</html>
+
